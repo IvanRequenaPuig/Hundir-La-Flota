@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hundir la Flota · Naval Command</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="sea"></canvas>
+<button class="btn sm" id="fsb" title="Pantalla completa (F)">⛶</button>
+
+<div id="loading"><div class="radar"></div><h1 class="ori" style="font-size:1.4rem">NAVAL COMMAND</h1><div class="bar"><i id="lbar"></i></div><div class="mut" id="ltxt">Calibrando radar…</div></div>
+
+<main>
+<section id="menu">
+  <div class="hero"><h1>HUNDIR LA FLOTA</h1><p>Comandante · Prepara tu flota</p></div>
+  <div class="menubtns"><button class="btn pri" id="bPlay">⚓ Jugar</button><button class="btn" id="bOpt">⚙ Opciones</button><button class="btn" id="bHelp">? Cómo jugar</button></div>
+  <div class="rec" id="rec"></div>
+</section>
+
+<section id="levels">
+  <div class="hero"><h1 style="font-size:clamp(1.6rem,5vw,2.8rem)">ELIGE TU NIVEL</h1><p>La dificultad cambia los tableros y la IA enemiga</p></div>
+  <div class="diffs" id="diffs"></div>
+  <div class="menubtns"><button class="btn" id="lBack">← Volver</button></div>
+</section>
+
+<section id="setup">
+  <div class="hud"><h2 style="font-size:1.2rem">DESPLIEGA TU FLOTA</h2><button class="btn sm" id="sBack">← Menú</button></div>
+  <div class="card">
+    <div class="mut" id="sHint"></div>
+    <div class="board" id="pb0"></div>
+    <div class="fleet" id="sFleet"></div>
+    <div class="row" style="justify-content:center;margin-top:14px">
+      <button class="btn sm" id="sRot">↻ Girar (R)</button>
+      <button class="btn sm" id="sUndo">↶ Deshacer</button>
+      <button class="btn sm" id="sRand">🎲 Aleatorio</button>
+      <button class="btn pri sm" id="sGo" disabled>¡Combatir!</button>
+    </div>
+  </div>
+</section>
+
+<section id="game">
+  <div class="hud">
+    <div class="banner" id="banner"></div>
+    <div class="stats"><span>⏱ <b id="tm">0:00</b></span><span>Disparos <b id="sh">0</b></span><span>Precisión <b id="ac">0%</b></span></div>
+    <button class="btn sm" id="bPause">❚❚ Pausa</button>
+  </div>
+  <div class="boards">
+    <div class="card"><div class="bt"><h3 style="font-size:.95rem">RADAR ENEMIGO</h3><span class="mut" id="eInfo"></span></div><div class="board target" id="eb"></div><div class="fleet" id="ef"></div></div>
+    <div class="card"><div class="bt"><h3 style="font-size:.95rem">TU FLOTA</h3><span class="mut" id="pInfo"></span></div><div class="board" id="pb"></div><div class="fleet" id="pf"></div></div>
+  </div>
+  <div class="card log" id="log"></div>
+</section>
+</main>
+
+<div class="ov" id="mPause"><div class="card"><h2>PAUSA</h2><div class="stack">
+  <button class="btn pri" id="pCont">Continuar</button><button class="btn" id="pOpt">Opciones</button><button class="btn" id="pRest">Reiniciar partida</button><button class="btn" id="pMenu">Salir al menú</button></div></div></div>
+
+<div class="ov" id="mOpt"><div class="card"><h2>OPCIONES</h2><div id="optBody"></div><button class="btn pri" style="width:100%;margin-top:14px" id="oClose">Listo</button></div></div>
+
+<div class="ov" id="mHelp"><div class="card"><h2>CÓMO JUGAR</h2><ul class="help">
+<li>Arrastra tus barcos al tablero: <b>1×5, 1×4, 2×3 y 2×2</b>. Gira con R, clic derecho o pulsando sobre un barco.</li>
+<li>Dispara en el radar enemigo. Alterna turnos con la máquina.</li>
+<li>Hunde todos los barcos rivales antes de que hundan los tuyos.</li>
+<li><b>Fácil:</b> tablero 12×12 para ti, 8×8 para ella, IA básica.</li>
+<li><b>Medio:</b> 10×10 para ambos, IA que remata barcos tocados.</li>
+<li><b>Difícil:</b> 8×8 para ti, 10×10 para ella, IA con probabilidades.</li>
+<li>Esc pausa la partida · F activa la pantalla completa.</li></ul>
+<button class="btn pri" style="width:100%;margin-top:14px" data-close="mHelp">Entendido</button></div></div>
+
+<div class="ov" id="mEnd"><div class="card"><div class="big" id="eIcon"></div><h2 id="eTit"></h2><p class="mut" id="eTxt" style="text-align:center"></p><div class="stack"><button class="btn pri" id="eAgain">Revancha</button><button class="btn" id="eMenu">Menú principal</button></div></div></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
